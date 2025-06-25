@@ -1,62 +1,42 @@
 export default class ALXCourse {
   constructor(name, length, students) {
-    // Type validation during object creation
-    if (typeof name !== "string") {
-      throw new TypeError("Name must be a string")
-    }
-    if (typeof length !== "number") {
-      throw new TypeError("Length must be a number")
-    }
-    if (!Array.isArray(students)) {
-      throw new TypeError("Students must be an array")
-    }
-    // Ensure all students are strings
-    if (!students.every((student) => typeof student === "string")) {
-      throw new TypeError("All students must be strings")
+    if (typeof name !== 'string') throw new TypeError('Name must be a string');
+    if (typeof length !== 'number') throw new TypeError('Length must be a number');
+    if (!Array.isArray(students) || !students.every((s) => typeof s === 'string')) {
+      throw new TypeError('Students must be an array of strings');
     }
 
-    // Store in underscore attribute versions
-    this._name = name
-    this._length = length
-    this._students = students
+    this._name = name;
+    this._length = length;
+    this._students = students;
   }
 
-  // Getter and setter for name
   get name() {
-    return this._name
+    return this._name;
   }
 
   set name(value) {
-    if (typeof value !== "string") {
-      throw new TypeError("Name must be a string")
-    }
-    this._name = value
+    if (typeof value !== 'string') throw new TypeError('Name must be a string');
+    this._name = value;
   }
 
-  // Getter and setter for length
   get length() {
-    return this._length
+    return this._length;
   }
 
   set length(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Length must be a number")
-    }
-    this._length = value
+    if (typeof value !== 'number') throw new TypeError('Length must be a number');
+    this._length = value;
   }
 
-  // Getter and setter for students
   get students() {
-    return this._students
+    return this._students;
   }
 
   set students(value) {
-    if (!Array.isArray(value)) {
-      throw new TypeError("Students must be an array")
+    if (!Array.isArray(value) || !value.every((s) => typeof s === 'string')) {
+      throw new TypeError('Students must be an array of strings');
     }
-    if (!value.every((student) => typeof student === "string")) {
-      throw new TypeError("All students must be strings")
-    }
-    this._students = value
+    this._students = value;
   }
 }
