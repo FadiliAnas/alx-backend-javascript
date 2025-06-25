@@ -1,4 +1,4 @@
-export default class ALXCourse {
+export default class HolbertonCourse {
   constructor(name, length, students) {
     this.name = name;
     this.length = length;
@@ -32,7 +32,7 @@ export default class ALXCourse {
   }
 
   set students(value) {
-    if (!Array.isArray(value) || !value.every((s) => typeof s === 'string')) {
+    if (!Array.isArray(value) || !value.every((student) => typeof student === 'string')) {
       throw new TypeError('Students must be an array of strings');
     }
     this._students = value;
