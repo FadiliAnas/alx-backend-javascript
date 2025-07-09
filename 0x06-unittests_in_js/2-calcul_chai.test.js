@@ -1,27 +1,38 @@
-const { expect } = require('chai');
-const calculateNumber = require('./2-calcul_chai.js');
+const { expect } = require("chai")
+const calculateNumber = require("./2-calcul_chai")
 
-describe('calculateNumber', () => {
-  describe('SUM', () => {
-    it('should return the sum of rounded numbers', () => {
-      expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
-    });
-  });
+describe("calculateNumber", () => {
+  describe("SUM", () => {
+    it("should return 6 when inputs are 1.4 and 4.5", () => {
+      expect(calculateNumber("SUM", 1.4, 4.5)).to.equal(6)
+    })
 
-  describe('SUBTRACT', () => {
-    it('should return the difference of rounded numbers', () => {
-      expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
-    });
-  });
+    it("should return 0 when inputs are 0.1 and -0.1", () => {
+      expect(calculateNumber("SUM", 0.1, -0.1)).to.equal(0)
+    })
+  })
 
-  describe('DIVIDE', () => {
-    it('should return the division of rounded numbers', () => {
-      expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2);
-    });
+  describe("SUBTRACT", () => {
+    it("should return -4 when inputs are 1.4 and 4.5", () => {
+      expect(calculateNumber("SUBTRACT", 1.4, 4.5)).to.equal(-4)
+    })
+
+    it("should return 0 when inputs are 1.4 and 1.4", () => {
+      expect(calculateNumber("SUBTRACT", 1.4, 1.4)).to.equal(0)
+    })
+  })
+
+  describe("DIVIDE", () => {
+    it("should return 0.2 when inputs are 1.4 and 4.5", () => {
+      expect(calculateNumber("DIVIDE", 1.4, 4.5)).to.equal(0.2)
+    })
 
     it('should return "Error" when dividing by 0', () => {
-      expect(calculateNumber('DIVIDE', 1.4, 0)).to.equal('Error');
-    });
-  });
-});
+      expect(calculateNumber("DIVIDE", 1.4, 0)).to.equal("Error")
+    })
 
+    it('should return "Error" when dividing by 0.2 (rounds to 0)', () => {
+      expect(calculateNumber("DIVIDE", 1.4, 0.2)).to.equal("Error")
+    })
+  })
+})
